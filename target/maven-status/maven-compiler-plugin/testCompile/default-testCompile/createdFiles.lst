@@ -1,0 +1,5 @@
+com\hrmanproject\domain\department\DepartmentIntegrationTest.class
+com\hrmanproject\domain\project\ProjectIntegrationTest.class
+com\hrmanproject\domain\employee\EmployeeIntegrationTest.class
+com\hrmanproject\common\AbstractPostgresIntegrationTest.class
+com\hrmanproject\domain\auth\AuthIntegrationTest.class
