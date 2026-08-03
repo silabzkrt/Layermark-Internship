@@ -4,8 +4,10 @@ import com.hrmanproject.domain.employee.dto.EmployeeCreateRequestDto;
 import com.hrmanproject.domain.employee.dto.EmployeeResponseDto;
 import com.hrmanproject.domain.employee.dto.ManagerEmployeeViewDto;
 import com.hrmanproject.domain.employee.dto.ProjectAssignmentRequestDto;
+import com.hrmanproject.common.search.SearchCriteria;
 import com.hrmanproject.domain.employee.service.EmployeeService;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,5 +60,11 @@ public class EmployeeController {
                                                 @RequestParam double speedFactor) {
         employeeService.completeProject(employeeId, projectId, completionRate, speedFactor);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<List<EmployeeResponseDto>> searchEmployees(@RequestBody List<SearchCriteria> criteriaList) {
+        List<EmployeeResponseDto> response = employeeService.searchEmployees(criteriaList);
+        return ResponseEntity.ok(response);
     }
 }

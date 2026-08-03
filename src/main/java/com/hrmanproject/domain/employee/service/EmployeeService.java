@@ -12,6 +12,9 @@ import com.hrmanproject.domain.employee.repository.EmployeeRepository;
 import com.hrmanproject.domain.project.Project;
 import com.hrmanproject.domain.project.repository.ProjectRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.data.jpa.domain.Specification;
+import com.hrmanproject.common.search.SearchCriteria;
+import com.hrmanproject.common.search.SpecificationBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -145,6 +148,14 @@ public class EmployeeService {
                 .currentProjectIds(mapProjectIds(employee.getCurrentProjects()))
                 .completedProjectIds(mapProjectIds(employee.getCompletedProjects()))
                 .build();
+    }
+
+    @Transactional(readOnly = true)
+    public List<EmployeeResponseDto> searchEmployees(List<SearchCriteria> criteriaList) {
+        Specification<Employee> specification = SpecificationBuilder.build(criteriaList);
+        return employeeRepository.findAll(specification).stream()
+                .map(this::mapToPublicResponseDto)
+                .collect(Collectors.toList());
     }
 
     private List<Long> mapProjectIds(List<Project> projects) {
