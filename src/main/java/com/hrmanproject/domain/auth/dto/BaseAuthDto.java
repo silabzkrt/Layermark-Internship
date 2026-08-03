@@ -1,0 +1,13 @@
+package com.hrmanproject.domain.auth.dto;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public abstract class BaseAuthDto {
+
+    private long timestamp = System.currentTimeMillis();
+}
