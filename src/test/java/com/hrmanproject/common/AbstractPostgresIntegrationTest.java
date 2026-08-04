@@ -14,9 +14,10 @@ public abstract class AbstractPostgresIntegrationTest {
 
     private static final PostgreSQLContainer<?> POSTGRES_CONTAINER =
             new PostgreSQLContainer<>("postgres:16-alpine")
-                    .withDatabaseName("hrman_test_db")
+                    .withDatabaseName("layermark_internship")
                     .withUsername("testuser")
-                    .withPassword("testpass");
+                    .withPassword("testpass")
+                    .withCreateContainerCmdModifier(cmd -> cmd.withName("hrmngmtproject-" + System.currentTimeMillis()));
 
     static {
         POSTGRES_CONTAINER.start();

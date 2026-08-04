@@ -1,17 +1,27 @@
 package com.hrmanproject.domain.department.repository;
 
 import com.hrmanproject.domain.department.Department;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
-@Repository
-public interface DepartmentRepository extends JpaRepository<Department, Long> {
+public interface DepartmentRepository {
+
+    Department save(Department department);
+
+    Optional<Department> findById(Long id);
+
+    List<Department> findAll();
+
+    void deleteById(Long id);
 
     Optional<Department> findByCode(String code);
 
     boolean existsByName(String name);
 
     boolean existsByCode(String code);
+
+    void deleteAll();
+
+    long count();
 }
