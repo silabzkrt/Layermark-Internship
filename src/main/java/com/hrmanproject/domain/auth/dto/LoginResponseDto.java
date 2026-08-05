@@ -1,6 +1,6 @@
 package com.hrmanproject.domain.auth.dto;
 
-import com.hrmanproject.domain.employee.enums.EmployeeTypes;
+import com.hrmanproject.domain.auth.enums.EmployeeTypes;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.hrmanproject.domain.employee.enums;
+package com.hrmanproject.domain.auth.enums;
 
 public enum EmployeeTypes {
     NULL,
